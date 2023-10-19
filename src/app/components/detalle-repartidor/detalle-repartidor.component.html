@@ -1,0 +1,18 @@
+<div *ngIf="repartidor" class="card">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ repartidor.nombre }} {{ repartidor.apellido }}
+    </h5>
+    <p class="card-text"><strong>DNI:</strong> {{ repartidor.dni }}</p>
+    <p class="card-text"><strong>Edad:</strong> {{ repartidor.edad }}</p>
+    <p class="card-text"><strong>País:</strong> {{ repartidor.pais }}</p>
+    <p class="card-text">
+      <strong>Capacidad de Transporte:</strong>
+      {{ repartidor.capacidadTransporte }}
+    </p>
+    <p class="card-text">
+      <strong>Unidad Propia:</strong>
+      {{ repartidor.unidadPropia ? "Sí" : "No" }}
+    </p>
+  </div>
+</div>

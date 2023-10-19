@@ -1,0 +1,135 @@
+<div>
+    <h4 class="mb-3">Datos de la pizza</h4>
+    <form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="form"
+      class="needs-validation"
+    >
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <label for="pizzaNombre" class="form-label"
+            >Nombre de la Pizza:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="pizzaNombre"
+            placeholder=""
+            formControlName="pizzaNombre"
+          />
+          <div *ngIf="form.controls['pizzaNombre'].errors != null">
+            <small
+              class="invalid"
+              *ngIf="
+                form.controls['pizzaNombre'].errors!['required'] &&
+                form.controls['pizzaNombre'].touched
+              "
+              >Debe ingresar el nombre de la pizza..</small
+            >
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="pizzaIngredientes" class="form-label"
+            >Ingredientes de la pizza:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="pizzaIngredientes"
+            placeholder=""
+            formControlName="pizzaIngredientes"
+          />
+          <div
+            *ngIf="form.controls['pizzaIngredientes'].errors != null"
+          >
+            <small
+              class="invalid"
+              *ngIf="
+                form.controls['pizzaIngredientes'].errors![
+                  'required'
+                ] && form.controls['pizzaIngredientes'].touched
+              "
+              >Debe ingresar los ingredientes de la pizza..</small
+            >
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="pizzaPeso" class="form-label"
+            >Peso de la pizza:</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="pizzaPeso"
+            placeholder=""
+            formControlName="pizzaPeso"
+          />
+          <div *ngIf="form.controls['pizzaPeso'].errors != null">
+            <small
+              class="invalid"
+              *ngIf="
+                form.controls['pizzaPeso'].errors!['required'] &&
+                form.controls['pizzaPeso'].errors!['required'] &&
+                form.controls['pizzaPeso'].touched
+              "
+              >Debe ingresar el peso de la pizza.
+            </small>
+            <small
+              class="invalid"
+              *ngIf="form.controls['pizzaPeso'].errors['min']"
+            >
+              El peso debe ser mayor o igual a 1.
+            </small>
+            <small
+              class="invalid"
+              *ngIf="form.controls['pizzaPeso'].errors['max']"
+            >
+              El peso debe ser menor o igual a 99.
+            </small>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="pizzaPrecio" class="form-label"
+            >Precio de la pizza:</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="pizzaPrecio"
+            placeholder=""
+            formControlName="pizzaPrecio"
+          />
+          <div *ngIf="form.controls['pizzaPrecio'].errors != null">
+            <small
+              class="invalid"
+              *ngIf="
+                form.controls['pizzaPrecio'].errors!['required'] &&
+                form.controls['pizzaPrecio'].errors!['required'] &&
+                form.controls['pizzaPrecio'].touched
+              "
+              >Debe ingresar el precio de la pizza.
+            </small>
+            <small
+              class="invalid"
+              *ngIf="form.controls['pizzaPrecio'].errors['min']"
+            >
+              El precio debe ser mayor o igual a $1.
+            </small>
+            <small
+              class="invalid"
+              *ngIf="form.controls['pizzaPrecio'].errors['max']"
+            >
+            El precio debe ser menor o igual a $1000.
+            </small>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4" />
+      <button class="w-100 btn btn-primary btn-lg" type="submit">
+        Agregar Pizza
+      </button>
+    </form>
+  </div>

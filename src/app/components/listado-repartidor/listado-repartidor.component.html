@@ -1,0 +1,57 @@
+<p>listado-repartidor works!</p>
+<main>
+    <div class="container py-4">     
+  
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <table>
+            <thead>
+              <tr>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>dni</th>
+                <th>edad</th>
+                <th>pais</th>
+                <th>capacidadTransporte</th>
+                <th>unidadPropia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let repartidor of repartidores">
+                <tr
+                  (click)="selectRepartidor(repartidor)"
+                  [ngClass]="{ selected: repartidor === repartidorSele }"
+                >
+                  <td>{{ repartidor.nombre }}</td>
+                  <td>{{ repartidor.apellido }}</td>
+                  <td>{{ repartidor.dni }}</td>
+                  <td>{{ repartidor.edad }}</td>
+                  <td>{{ repartidor.pais }}</td>
+                  <td>{{ repartidor.capacidadTransporte }}</td>
+                  <td>{{ repartidor.unidadPropia }}</td>
+                 
+                </tr>               
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+      <div *ngIf="repartidorSele" class="row align-items-md-stretch">
+
+        <div class="col-md-6">
+          <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <app-detalle-repartidor [repartidor]="repartidorSele"></app-detalle-repartidor>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <app-detalle-pais-repartidor  [pais]="pais"></app-detalle-pais-repartidor>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </main>
+  

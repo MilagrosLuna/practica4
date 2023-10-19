@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Peso</th>
+      <th>Precio</th>
+      <th>Ingredientes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let pizza of pizzas">
+      <tr (click)="selectPizza(pizza)" [ngClass]="{ selected: pizza === pizzaSele }">
+        <td>{{ pizza.nombre }}</td>
+        <td>{{ pizza.peso }} g</td>
+        <td>$ {{ pizza.precio }}</td>
+        <td>{{ pizza.ingredientes }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

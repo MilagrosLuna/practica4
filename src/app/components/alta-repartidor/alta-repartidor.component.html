@@ -1,0 +1,215 @@
+<body class="bg-light">
+  <div class="container">
+    <main>
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Seleccione el pais</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <app-listado-paises></app-listado-paises>
+          </ul>
+        </div>
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Datos del Repartidor</h4>
+          <form
+            (ngSubmit)="onSubmit()"
+            [formGroup]="form"
+            class="needs-validation"
+          >
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="repartidorName" class="form-label"
+                  >Nombre del repartidor:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="repartidorName"
+                  placeholder=""
+                  formControlName="repartidorName"
+                />
+                <div *ngIf="form.controls['repartidorName'].errors != null">
+                  <small
+                    class="invalid"
+                    *ngIf="
+                      form.controls['repartidorName'].errors!['required'] &&
+                      form.controls['repartidorName'].touched
+                    "
+                    >Debe ingresar el nombre del repartidor..</small
+                  >
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="repartidorLastName" class="form-label"
+                  >Apellido del repartidor:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="repartidorLastName"
+                  placeholder=""
+                  formControlName="repartidorLastName"
+                />
+                <div *ngIf="form.controls['repartidorLastName'].errors != null">
+                  <small
+                    class="invalid"
+                    *ngIf="
+                      form.controls['repartidorLastName'].errors!['required'] &&
+                      form.controls['repartidorLastName'].touched
+                    "
+                    >Debe ingresar el apellido del repartidor..</small
+                  >
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="repartidordni" class="form-label"
+                  >DNI del repartidor:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="repartidordni"
+                  placeholder=""
+                  formControlName="repartidordni"
+                />
+                <div *ngIf="form.controls['repartidordni'].errors != null">
+                  <small
+                    class="invalid"
+                    *ngIf="
+                      form.controls['repartidordni'].errors!['required'] &&
+                      form.controls['repartidordni'].touched
+                    "
+                    >Debe ingresar el DNI del repartidor..</small
+                  >
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="selectedCountry" class="form-label"
+                  >País del repartidor:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="selectedCountry"
+                  [value]="selectedCountry ? selectedCountry.name : ''"
+                  formControlName="selectedCountry"
+                />
+              </div>
+
+              <div class="col-sm-6">
+                <label for="repartidorEdad" class="form-label"
+                  >Edad del repartidor:</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="repartidorEdad"
+                  placeholder=""
+                  formControlName="repartidorEdad"
+                />
+                <div *ngIf="form.controls['repartidorEdad'].errors != null">
+                  <small
+                    class="invalid"
+                    *ngIf="
+                      form.controls['repartidorEdad'].errors!['required'] &&
+                      form.controls['repartidorEdad'].errors!['required'] &&
+                      form.controls['repartidorEdad'].touched
+                    "
+                    >Debe ingresar la Edad del repartidor.
+                  </small>
+                  <small
+                    class="invalid"
+                    *ngIf="form.controls['repartidorEdad'].errors['min']"
+                  >
+                    La edad debe ser mayor o igual a 18 años.
+                  </small>
+                  <small
+                    class="invalid"
+                    *ngIf="form.controls['repartidorEdad'].errors['max']"
+                  >
+                    La edad debe ser menor o igual a 99 años.
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="repartidorcapacidadTransporte" class="form-label"
+                  >Capacidad de transporte del repartidor:</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="repartidorcapacidadTransporte"
+                  placeholder=""
+                  formControlName="repartidorcapacidadTransporte"
+                />
+                <div
+                  *ngIf="
+                    form.controls['repartidorcapacidadTransporte'].errors !=
+                    null
+                  "
+                >
+                  <small
+                    class="invalid"
+                    *ngIf="
+                      form.controls['repartidorcapacidadTransporte'].errors![
+                        'required'
+                      ] &&
+                      form.controls['repartidorcapacidadTransporte'].errors![
+                        'required'
+                      ] &&
+                      form.controls['repartidorcapacidadTransporte'].touched
+                    "
+                    >Debe ingresar la Capacidad de transporte del repartidor.
+                  </small>
+                  <small
+                    class="invalid"
+                    *ngIf="
+                      form.controls['repartidorcapacidadTransporte'].errors[
+                        'min'
+                      ]
+                    "
+                  >
+                    La Capacidad debe ser mayor o igual a 1.
+                  </small>
+                  <small
+                    class="invalid"
+                    *ngIf="
+                      form.controls['repartidorcapacidadTransporte'].errors[
+                        'max'
+                      ]
+                    "
+                  >
+                    La Capacidad debe ser menor o igual a 20.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="repartidorunidadPropia"
+                  formControlName="repartidorunidadPropia"
+                />
+                <label class="form-check-label" for="repartidorunidadPropia"
+                  >Unidad Propia</label
+                >
+              </div>
+            </div>
+            <hr class="my-4" />
+            <button class="w-100 btn btn-primary btn-lg" type="submit">
+              Agregar Repartidor
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="form-validation.js"></script>
+</body>
